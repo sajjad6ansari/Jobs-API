@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jobs API - Documentation</title>
+    <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0d6efd;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+        }
+
+        header a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #0056b3;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 8px;
+            transition: background 0.3s ease-in-out, transform 0.2s;
+        }
+
+        header a:hover {
+            background-color: #003d82;
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #0d6efd;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        a.github-link {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #fff;
+            background: #24292e;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+        }
+
+        a.github-link:hover {
+            background: #000;
+        }
+
+        a.postman-link {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #fff;
+            background: #ff6c37;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+        }
+
+        a.postman-link:hover {
+            background: #e0521d;
+        }
+
+        footer {
+            text-align: center;
+            margin: 25px 0;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+            }
+
+            header a {
+                width: 80%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/api-docs" target="_blank">📄 Swagger Documentation</a>
+        <a href="https://www.postman.com/sajjad6ansari/ahlan/collection/k9w32b6/jobs-api" target="_blank">🧪 Open
+            Postman Collection</a>
+    </header>
+
+    <!-- Container -->
+    <div class="container">
+        <h1>🚀 Jobs API</h1>
+        <p>
+            The <strong>Jobs API</strong> is a RESTful backend service designed for managing user authentication,
+            authorization,
+            and CRUD operations for job postings. It follows modern API development practices, ensuring
+            security, scalability, and clean architecture.
+        </p>
+
+        <h2>🧪 API Testing & Automation</h2>
+        <p>
+            The API is tested and automated using <strong>Postman</strong>.
+            You can explore the full public Postman collection here:
+        </p>
+        <a class="postman-link" href="https://www.postman.com/sajjad6ansari/ahlan/collection/k9w32b6/jobs-api"
+            target="_blank">🌐 Open Postman Collection</a>
+
+        <h2>🔗 GitHub Repository</h2>
+        <p>
+            Access the complete source code:
+            <a class="github-link" href="https://github.com/sajjad6ansari/Jobs-API" target="_blank">
+                🌐 View on GitHub
+            </a>
+        </p>
+
+        <h2>🛠️ Tech Stack</h2>
+        <ul>
+            <li><strong>Backend:</strong> Node.js, Express.js</li>
+            <li><strong>Database:</strong> MongoDB + Mongoose</li>
+            <li><strong>Authentication:</strong> JWT (JSON Web Tokens)</li>
+            <li><strong>API Documentation:</strong> Swagger + YAML</li>
+            <li><strong>Testing:</strong> Postman (Manual + Automated)</li>
+            <li><strong>Security:</strong> Helmet, CORS, XSS-Clean, Rate Limiting</li>
+            <li><strong>Deployment:</strong> Render</li>
+        </ul>
+
+        <h2>📌 References</h2>
+        <p>
+            This project was inspired by modern REST API development principles,
+            documentation-first design, and secure software engineering practices.
+        </p>
+    </div>
+
+    <footer>
+        &copy; ${new Date().getFullYear()} Sajjad Ansari. All rights reserved.
+    </footer>
+</body>
+
+</html>
