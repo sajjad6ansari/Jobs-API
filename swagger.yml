@@ -1,0 +1,229 @@
+openapi: 3.0.0
+info:
+  title: Jobs API
+  version: 1.0.0
+  description: API for user authentication and job management.
+servers:
+  - url: https://jobs-api-xoge.onrender.com
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Authentication
+      summary: Register User
+      description: Allows a new user to register.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Peter
+                email:
+                  type: string
+                  example: peter@gmail.com
+                password:
+                  type: string
+                  example: ^&vsmigaxzuzi1n
+      responses:
+        "201":
+          description: User registered successfully.
+          content:
+            application/json:
+              example:
+                user:
+                  name: Peter
+                  email: peter@gmail.com
+                token: "<JWT_TOKEN>"
+        "400":
+          description: Bad Request (Invalid input).
+
+  /auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: Login User
+      description: Allows an existing user to log in.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: peter@gmail.com
+                password:
+                  type: string
+                  example: ^&vsmigaxzuzi1n
+      responses:
+        "200":
+          description: Login successful.
+          content:
+            application/json:
+              example:
+                user:
+                  name: Peter
+                  email: peter@gmail.com
+                token: "<JWT_TOKEN>"
+        "401":
+          description: Unauthorized (Invalid credentials).
+
+  /jobs:
+    post:
+      tags:
+        - Jobs
+      summary: Create Job
+      description: Allows an authenticated user to create a new job.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                company:
+                  type: string
+                  example: Green-Tech
+                position:
+                  type: string
+                  example: Back-end Engineer
+      responses:
+        "201":
+          description: Job created successfully.
+          content:
+            application/json:
+              example:
+                job:
+                  id: "673ece45557f5c92db5b6b3a"
+                  company: Green-Tech
+                  position: Back-end Engineer
+                  createdBy: "User ID"
+        "400":
+          description: Bad Request.
+
+    get:
+      tags:
+        - Jobs
+      summary: Get All Jobs
+      description: Retrieve all jobs created by the authenticated user.
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successfully retrieved all jobs.
+          content:
+            application/json:
+              example:
+                count: 2
+                jobs:
+                  - id: "673ece45557f5c92db5b6b3a"
+                    company: Green-Tech
+                    position: Back-end Engineer
+                  - id: "674adb403c34f69eb11c7295"
+                    company: StarFlix
+                    position: Java Developer
+
+  /jobs/{id}:
+    get:
+      tags:
+        - Jobs
+      summary: Get Single Job
+      description: Retrieve details of a specific job by its ID.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 674adb403c34f69eb11c7295
+      responses:
+        "200":
+          description: Job fetched successfully.
+          content:
+            application/json:
+              example:
+                job:
+                  id: "674adb403c34f69eb11c7295"
+                  company: StarFlix
+                  position: Java Developer
+        "404":
+          description: Job not found.
+
+    patch:
+      tags:
+        - Jobs
+      summary: Update Job
+      description: Update details of an existing job by its ID.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 673ece45557f5c92db5b6b3a
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                company:
+                  type: string
+                  example: StarFlix
+                position:
+                  type: string
+                  example: Java Developer
+      responses:
+        "200":
+          description: Job updated successfully.
+          content:
+            application/json:
+              example:
+                job:
+                  id: "673ece45557f5c92db5b6b3a"
+                  company: StarFlix
+                  position: Java Developer
+        "404":
+          description: Job not found.
+
+    delete:
+      tags:
+        - Jobs
+      summary: Delete Job
+      description: Delete a job by its ID.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 673ece45557f5c92db5b6b3a
+      responses:
+        "200":
+          description: Job deleted successfully.
+          content:
+            application/json:
+              example:
+                message: Job deleted successfully.
+        "404":
+          description: Job not found.

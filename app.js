@@ -40,6 +40,13 @@ app.use(xss())
 app.get("/", () => {
   res.send("jobs api")
 })
+
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
+const swaggerDocument = YAML.load("./swagger.yaml");
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 // routes
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/jobs", authenticateUSer, jobsRouter)
